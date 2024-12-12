@@ -1,13 +1,16 @@
 #!/bin/bash
 
 # Script for configuring openwifi side_ch for capturing CSI or I/Q data
+# Note that the joint mono-static and bi-static mode is not finished and is here
+# for future development
+# REVISIT: Do we want a calculation here for the side_ch length? or assumed to be done somewhere else?
 
 # Inputs
 system_mode=${1:-"monostatic"}
 data_type=${2:-"tx_rx_iq0"}
 data_type_jmb=${3:-"iq"}
 num_eq=${4:-8}
-side_ch_interrupt_init=${5:-0}
+side_ch_interrupt_init=${5:-1}
 iq_len=${6:-4093}
 
 # The I/Q header length and CSI header lengths are fixed in hardware
@@ -20,8 +23,6 @@ set -x
 #------------------------------------------------------------------------------
 # side_ch driver
 #------------------------------------------------------------------------------
-
-# REVISIT: Do we want a calculation here for the side_ch length? or assumed to be done somewhere else?
 
 # For joint monostatic and bistatic, just load the driver, we don't need to configure it further as the interrupt mode handles sizes itself
 # The interrupt mode is required for joint monostatic and bistatic capture

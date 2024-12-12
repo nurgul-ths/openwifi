@@ -1,0 +1,13 @@
+*.hdf5
+*.csv
+*.log
+*.txt
+*.png
+*.json
+*.npy
+*.zip
+*.mat
+*.mp4
+*.sync.ffs_db
+
+*.processed

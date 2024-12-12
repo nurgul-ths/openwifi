@@ -99,14 +99,11 @@ elif [[ "$loop_type" == 'cabled' || "$loop_type" == 'air' ]]; then
     fi
 
     # New values of RX gains (actual gain!)
-    # REVISIT: Why is the default RX gain set to like 71?
     cat in_voltage0_hardwaregain
     cat in_voltage1_hardwaregain
 
     # REVIIST: Need tx_ant in this script
-    # REVISIT: Make this work, because if this for one of the poirts is not 0, something does not work
-    # REVISIT: THe above issue might have been fixed by (REVISIT: Add github link)
-    # REVISIT: This gets overwritten somehow later on, so we have to set it again
+    # REVISIT: Check if this works
     if [[ $cdd_en == 1 || $tx_ant_dual_en == 1 ]]; then
       echo $rf_tx0_atten > out_voltage0_hardwaregain
       echo $rf_tx1_atten > out_voltage1_hardwaregain

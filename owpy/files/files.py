@@ -1,5 +1,14 @@
 """
 File management functions
+
+REVISIT:
+- Clean up here, some functions are not used anymore, check if they are not used elsewhere, also
+  I don't even use the data loader functions anymore, I should check in a basic script that I can load the
+  data and add a reference or put this script here in the repo next to files.py
+- REVISIT: Rename fname_base to fname_template as we modify it, and base refers to when you just have the filename without the path.
+- REVISIT: Maybe allow exp_fname_param_list to also take stuff from other dictionaries
+- REVISIT: Make the files more compressed, quite large for now when saving in .csv, I need a file format that allows me to continuously write so
+- if an experiment fails I don't lose the data. Maybe I can use h5py for that or .mat files, but I need to check if it allows me to write continuously.
 """
 
 import json
@@ -58,16 +67,15 @@ IQ_TIMESTAMP_NAMES = [
 
 def gen_fnames(params):
   """
-  Generates the base filename for an experiment and assigns it to `params`.
+  The base filename is built as
+  1) f"{params.exp_fname_extra}_"
+  2) Then, using params.exp_fname_param_list, we add each parameter mentioned there and its value to the filename
 
-  The base filename is built as:
-  1) `f"{params.exp_fname_extra}_"`
-  2) Then, using `params.exp_fname_param_list`, adds each parameter and its value mentioned there to the filename.
+  Note that params.exp_dir is assumed to be located relative to this repository's root directory
 
-  Note that `params.exp_dir` is assumed to be located relative to this repository's root directory.
-
+  REVISIT: Be consistent in documenting params
   Args:
-    params (argparse.Namespace): Object with parameters for the experiment
+    params (argparse.ArgumentParser): ArgumentParser object with parameters
   """
 
   exp_name_extended = ""
@@ -174,6 +182,16 @@ def gen_files(params):
   Generates the data files and returns a dictionary of filehandles to these
   Note that this function must be called after gen_fnames() and gen_data_dir() to generate the names and directory.
 
+  For the sake of sharing parameters (params), call these 2 before multiprocessing starts
+  but gen_files has to be called after multiprocessing starts in the process that writes to properly handle file management
+
+  Note that when in the joint monostatic and bistatic mode, if we use I/Q data for both monosatic and bistatic data, they share
+  the timestamp file since they anyway share the same data files, it's just the strigger file that distinguishes them.
+
+  For joint mode where they are not the same, we make a separate timestamp file for each mode, but the data files are shared.
+
+  If they don't
+
   Args:
     params (argparse.ArgumentParser): The Params object containing all the parameters for the experiment
 
@@ -252,17 +270,7 @@ def close_files(fd_dict):
 
 
 def gen_log_file(params):
-  """Generates the log file and dumps parameters into it.
-
-  This function uses the current experiment's base filename to create a unique log file
-  where experiment parameters and relevant data are stored.
-
-  Args:
-    params (argparse.ArgumentParser): Object containing parameters for the experiment
-
-  Raises:
-    Exception: If the log file cannot be created or written to
-  """
+  """Generates the log fname, the file, and dumps the parameters into it"""
 
   if not params.save_log:
     return
@@ -289,7 +297,6 @@ def gen_log_file(params):
 
 def update_log_file(params, new_data):
   """Appends new data to the log file while maintaining JSON structure."""
-
   try:
     with open(params.log_fname, 'r') as f:
       data = json.load(f)
@@ -332,3 +339,4 @@ def save_complex_data(fname_real, fname_imag, data, row_format=True, fmt='%f'):
   """
   save_data(fname_real, np.real(data), row_format, fmt)
   save_data(fname_imag, np.imag(data), row_format, fmt)
+

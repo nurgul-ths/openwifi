@@ -16,25 +16,29 @@ The script will create 'database.json' files in each relevant subdirectory and r
 import os
 import json
 import traceback
+import subprocess
 
 #===============================================================================
-# Constants
+# Parameters
 #===============================================================================
 
-PATH_REPO = '../../openwifi_boards'
+# Attempt to get the repository root directory using Git.
+# If not in a Git repo, fallback to the directory containing this script.
+try:
+  PATH_REPO = subprocess.check_output(['git', 'rev-parse', '--show-toplevel'], universal_newlines=True).strip()
+except Exception:
+  PATH_REPO = os.path.dirname(os.path.abspath(__file__))
+
 PATH_DATA = os.path.join(PATH_REPO, 'data')
 
 FIELD_NAMES = [
   "fname_base", "date", "exp_descr", "bb_rx_gain", "bb_tx_gain", "rf_tx0_atten", "rf_tx1_atten", "rf_rx_gain", "freq", "board_name", "sampling_time",
   "cdd_en", "tx_ant_dual_en",
-  "cnc1_enable", "cnc1_dist_mm", "cnc1_freq_cycles_minute", "cnc1_duration_minutes", "cnc1_usbN",
-  "cnc2_enable", "cnc2_dist_mm", "cnc2_freq_cycles_minute", "cnc2_duration_minutes", "cnc2_usbN",
   "room", "location", "ref_file_name", 'label',
-  'filter_length', 'filter_shift', 'filter_reset', 'filter_n_int', 'filter_bitwidth', 'filter_bias_enable', 'filter_bias_n_int', 'filter_bias_bitwidth', 'filter_enabled',
   'ant_arrangement',
   'local_machine_first_sample_unix', 'local_machine_last_sample_unix',
-  'external_machine_first_sample_unix', 'capture_file', 'filename_of_fpart0_file'
 ]
+
 
 #===============================================================================
 # Functions

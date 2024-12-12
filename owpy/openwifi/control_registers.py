@@ -10,7 +10,6 @@ We can do 3 things:
 import logging
 logger = logging.getLogger('processing_app')
 
-import time
 import os
 from owpy.openwifi.misc import is_openwifi_board
 from owpy.openwifi.ssh import SSHClient

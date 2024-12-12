@@ -41,20 +41,3 @@ def print_capture_info(time_start, time_end, frame_idx):
   print("\tMeasured for: {} seconds".format(duration))
   print("\tCapture: {} frames".format(frame_idx))
   print("\tCapture rate: {} sps".format(rate))
-
-
-def print_sampling_time(sampling_time_sec):
-  """Prints the sampling time in hours, minutes, and seconds based on sampling time in seconds
-
-  Args:
-    sampling_time_sec (int): The sampling time in seconds.
-  """
-
-  hours   =  sampling_time_sec // 3600
-  minutes = (sampling_time_sec % 3600) // 60
-  seconds = (sampling_time_sec % 3600) % 60
-
-  if sampling_time_sec == -1:
-    print("\nStarting data collection indefinitely\n")
-  else:
-    print(f"\nStarting data collection for {hours} hours {minutes} minutes {seconds} seconds\n")

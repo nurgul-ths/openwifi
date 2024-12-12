@@ -235,8 +235,7 @@ def validate_openwifi_rf_atten_tx(rx_atten_tx):
     ValueError: If attenuation is outside the valid range [0, -89.75] dB.
   """
   if rx_atten_tx > 0 or rx_atten_tx < -89.75:
-    raise ValueError(
-        f"Invalid rx_atten_tx: {rx_atten_tx}. Must be between 0 and -89.75 dB in 0.25dB steps.")
+    raise ValueError(f"Invalid rx_atten_tx: {rx_atten_tx}. Must be between 0 and -89.75 dB in 0.25dB steps.")
 
 
 def validate_openwifi_rf_rx_gain(rf_rx_gain):
@@ -249,8 +248,7 @@ def validate_openwifi_rf_rx_gain(rf_rx_gain):
     ValueError: If gain is outside the valid range [-3, 71] dB.
   """
   if rf_rx_gain > 71 or rf_rx_gain < -3:
-    raise ValueError(
-        f"Invalid rf_rx_gain: {rf_rx_gain}. Must be between -3 and 71 dB in 1dB steps.")
+    raise ValueError(f"Invalid rf_rx_gain: {rf_rx_gain}. Must be between -3 and 71 dB in 1dB steps.")
 
 
 def adjust_openwifi_rf_rx_gain(params):

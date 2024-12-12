@@ -69,7 +69,7 @@ elif [[ "$loop_type" == 'cabled' || "$loop_type" == 'air' ]]; then
   # Ensure rx_intf gets data from ADC
   ./sdrctl dev sdr0 set reg rx_intf 3 0
 
-  # Disable SPI control so TX LO is always on
+  # Disable SPI control so TX LO is always on ($spi_en = 0) or enable SPI control so TX LO is controlled by SPI ($spi_en = 1)
   if [[ "$board_name" == 'zed_fmcs2' ]]; then
     if [[ $spi_en == 0 ]]; then
       echo 'Disable SPI control'

@@ -14,7 +14,7 @@ set -x
 # Disable the cancellation (if it was used)
 ./sdrctl dev sdr0 set reg tx_intf 3 0
 
-# Disable any gain scaling (also disables )
+# Disable any gain scaling (also disables)
 ./sdrctl dev sdr0 set reg tx_intf 13 0
 
 #------------------------------------------------------------------------------

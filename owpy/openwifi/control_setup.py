@@ -117,3 +117,14 @@ def side_ch_openwifi(verbose = 1):
     print("Press Ctrl+C to exit (if done collecting samples)")
 
   subprocess.run(ssh_cmd, shell=True, check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
+
+
+
+
+
+
+
+
+

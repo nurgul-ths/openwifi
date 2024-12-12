@@ -4,16 +4,6 @@ For example, if you want to change the carrier frequencie etc. you can use this 
 has a nice overview of all the commands that can be executed on the boards.
 
 This is also a great way of documenting the commands that can be executed on the boards.
-
-The final execution of the commands is done from
-
-For exaple
-
-python board_cmd_exec.py --cmd set_carrier_frequency --args 2412
-
-or with multiple arguments
-
-python board_cmd_exec.py --cmd set_dac_intf_filter_mode --args sample_noise
 """
 
 import argparse
@@ -21,8 +11,9 @@ from owpy.openwifi.ssh import SSHClient
 
 from owpy.openwifi.control_registers import write_register, read_register
 from owpy.openwifi.control_sysfs import sysfs_get_rx_gain, sysfs_set_rf_rx_gain, sysfs_get_rf_tx_atten, sysfs_set_rf_tx_atten, sysfs_set_rf_gain_control_mode
-
 from owpy.misc import frequency_to_channel, channel_to_frequency
+
+
 
 #==============================================================================
 # Commands for frequency
@@ -84,7 +75,7 @@ def set_rx_rf_gain(gain_db, rx_ant=0, ssh_client=None):
   """
   The range is larger than -3dB to less than or equal to 71 dB in 1 dB steps.
 
-  Example
+  Example to set the gain to 10 dB on RX antenna 0:
   >>> python board_cmd_exec.py --cmd=set_rx_rf_gain --args="10 0"
   """
   gain_db = float(gain_db)
@@ -162,6 +153,7 @@ def get_tx_rf_atten(tx_ant=0, ssh_client=None):
 
 
 
+
 #==============================================================================
 # Main
 #==============================================================================
@@ -189,23 +181,17 @@ def main(cmd, args, ssh_client):
   Main function for executing commands on the board.
   """
   # Dictionary of commands and functions
-  commands = {
-    'set_dac_intf_filter_mode': set_dac_intf_filter_mode,
 
+  commands = {
     'set_carrier_frequency': set_carrier_frequency,
     'get_carrier_frequency': get_carrier_frequency,
-
     'rx_rf_gain_increase': rx_rf_gain_increase,
     'set_rx_rf_gain': set_rx_rf_gain,
     'get_rx_rf_gain': get_rx_rf_gain,
     'set_rf_gain_control_mode': set_rf_gain_control_mode,
-
     'set_tx_rf_gain_increase': set_tx_rf_gain_increase,  # 'set_tx_rf_gain_increase' is not implemented yet
     'set_tx_rf_atten': set_tx_rf_atten,
     'get_tx_rf_atten': get_tx_rf_atten,
-
-    'set_filter': set_filter,
-    'get_filter': get_filter,
   }
 
   if cmd in commands:

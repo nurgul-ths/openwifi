@@ -2,11 +2,15 @@
 UDP handler
 
 Data coming from the openwifi board is sent through a UDP socket. This class handles the UDP socket and keeps the connection alive.
+
+REVISIT: This timeout seems to be necessary for the processing part
 """
 
 import socket
 from datetime import datetime
 
+
+# REVISIT: Add data type here since this will change num_dma_symbol_per_trans to be based on csi vs I/Q. See also side_ch_control.v
 class UDPHandler:
   def __init__(self, UDP_IP="192.168.10.1", UDP_PORT=4000, MAX_NUM_DMA_SYMBOL=8192, receive_buffer_size_bytes=2**23):
     """Initialize the UDPHandler class which handles the UDP socket to the openwifi board.

@@ -1,16 +1,14 @@
-#==============================================================================
-#
-# AUTHOR: Andreas Toftegaard Kristensen
-#
-# BRIEF: The Makefile is called from the experiments directory and contains the
-# the main rules for setting up the openwifi_board and running the experiments.
-#
-#==============================================================================
+#------------------------------------------------------------------------------
+# Repo targets
+#------------------------------------------------------------------------------
+submodule_init:
+	git submodule init
+	ln -s submodules/neulog/neulog owpy/neulog
 
-#------------------------------------------------------------------------------
-# Targets
-#------------------------------------------------------------------------------
-YAML_FILE = ""
+submodule_update:
+	git submodule update
+
+YAML_FILE = "yaml/exp_iq.yaml"
 
 init:
 	python run_exp.py --action=init --yaml-file=$(YAML_FILE)
@@ -26,3 +24,10 @@ inject:
 
 run:
 	python run_exp.py --action=run --yaml-file=$(YAML_FILE)
+
+#------------------------------------------------------------------------------
+# Github copy
+#------------------------------------------------------------------------------
+
+github:
+	python github_lite.py --src_dir /home/andreas/gitlab_wisense/devices/openwifi_boards --dst_dir /home/andreas/github/wcnc2024_monostatic_sensing_openwifi --config_file /home/andreas/gitlab_wisense/devices/openwifi_boards/github_lite.yaml

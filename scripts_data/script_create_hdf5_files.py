@@ -25,28 +25,24 @@ import pandas as pd
 import h5py
 import argparse
 from multiprocessing import Pool, cpu_count
+import subprocess
 
 #===============================================================================
-# Constants
+# Parameters
 #===============================================================================
 
-PATH_REPO = '../../openwifi_boards'
+# Attempt to get the repository root directory using Git.
+# If not in a Git repo, fallback to the directory containing this script.
+try:
+  PATH_REPO = subprocess.check_output(['git', 'rev-parse', '--show-toplevel'], universal_newlines=True).strip()
+except Exception:
+  PATH_REPO = os.path.dirname(os.path.abspath(__file__))
+
 # Uncomment the desired PATH_DATA or set your own
-# PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw')
-# PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw', 'channel_hopping_movement', 'zed_fmcs2', 'rx_iq0_iq1', 'air', 'channel_fixed_cnc')
-# PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw', 'channel_hopping_movement', 'zed_fmcs2', 'rx_iq0_iq1', 'air', 'channel_hopping_cnc')
-PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw', 'channel_hopping_movement', 'zed_fmcs2', 'rx_iq0_iq1', 'air')
-
-# PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw', 'channel_hopping_movement', 'zed_fmcs2', 'rx_iq0_iq1', 'air', 'channel_fixed_walking_a2')
-# PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw', 'channel_hopping_movement', 'zed_fmcs2', 'rx_iq0_iq1', 'air', 'channel_hopping_walking_a2')
-# PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw', 'channel_hopping_movement', 'zed_fmcs2', 'rx_iq0_iq1', 'air', 'channel_fixed_walking_a1')
-# PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw', 'channel_hopping_movement', 'zed_fmcs2', 'rx_iq0_iq1', 'air', 'channel_hopping_walking_a1')
-# PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw', 'channel_hopping_movement', 'zed_fmcs2', 'rx_iq0_iq1', 'air', 'channel_fixed_walking_a2')
-# PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw', 'channel_hopping_movement', 'zed_fmcs2', 'rx_iq0_iq1', 'air', 'channel_fixed_calibration_a2')
+PATH_DATA = os.path.join(PATH_REPO, 'data', 'raw')
 
 # Compression level setting (0 for no compression, 9 for max compression)
 # Actually, for h5py, the default is 4 https://docs.h5py.org/en/stable/high/dataset.html
-# 6 seems to take a very long time to read
 COMPRESSION_LEVEL = 6  # Adjust this between 0 (no compression) to 9 (max compression), 6 is the default. We do not seem to benefit from 9. 6 is a good compromise in speed and compression ratio.
 
 #===============================================================================
@@ -263,31 +259,3 @@ if __name__ == "__main__":
 
 
 
-
-
-
-
-
-
-
-# def process_csv_to_hdf5(path_data, dry_run=False, compression_level=COMPRESSION_LEVEL):
-#   """
-#   Processes all CSV and CSV.zip files, converts them to HDF5 format,
-#   and applies gzip compression. Removes extracted CSV files after processing.
-
-#   Args:
-#     path_data (str): The directory where the CSV files are located.
-#     dry_run (bool): If True, only print what would be done without actually converting files.
-
-#   Returns:
-#     None
-#   """
-#   for dirpath, _, filenames in os.walk(path_data):
-#     for filename in filenames:
-#       # Skip files that are not CSV or zipped CSV
-#       if not (filename.endswith('.csv') or filename.endswith('.csv.zip')):
-#         continue
-
-#       # Skip files with '_raw' in their names
-#       if '_raw' in filename:
-#         continue

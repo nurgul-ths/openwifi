@@ -1,88 +1,105 @@
-""" Functions for data logging """
+"""
+Utility functions for logging data in various applications.
+Provides a consistent setup for loggers and a standard naming convention for log files.
+"""
 
 import os
 import logging
 from datetime import datetime
 
 def create_logger(name):
- """
- Base logger configuration for defaults. Used in the different apps to set up their individual loggers
- with the correct settings. Ensure that in functions where you want to use this logger you are
- in the same process (if doing multiprocessing) and that you call with the name of the logger
- at the top of the file. An example is given below for the processing_app
+  """
+  Create and configure a logger with a given name.
 
- >>> import logging
- >>> logger = logging.getLogger('processing_app')
+  This function sets up a logger that writes log messages to a dedicated file.
+  By default, it logs at the DEBUG level (which includes all messages DEBUG and above).
 
- Args:
-   name (str): Name of the logger
- """
- logger = logging.getLogger(name)
- logger.propagate = False  # Do not pass messages to the root logger (also stops printing to the terminal)
+  To use this logger in another module, ensure you import and get the logger by name:
 
- format = '[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s'
+  >>> import logging
+  >>> logger = logging.getLogger('processing_app')
+  >>> logger.debug('This is a debug message')
 
- handler = logging.FileHandler(get_logger_fname(name), mode='w')
- handler.setFormatter(logging.Formatter(format))
+  Args:
+    name (str): Name of the logger, typically the application or module name.
 
- logger.addHandler(handler)
- # logger.setLevel(logging.NOTSET)  # Level 0  - Log absolutely everything (lowest level)
- # logger.setLevel(logging.DEBUG)   # Level 10 - Detailed information for debugging
- # logger.setLevel(logging.INFO)    # Level 20 - General operational messages
- # logger.setLevel(logging.WARNING) # Level 30 - Warning messages for potential issues
- # logger.setLevel(logging.ERROR)   # Level 40 - Error messages for serious problems
- # logger.setLevel(logging.CRITICAL)# Level 50 - Critical errors that may prevent program from running
+  Returns:
+    logging.Logger: Configured logger instance.
+  """
 
- logger.setLevel(logging.DEBUG)  # Current setting: Detailed debug information
+  logger = logging.getLogger(name)
+  logger.propagate = False  # Prevent messages from bubbling up to the root logger
 
- return logger
+  log_format = '[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s'
+
+  handler = logging.FileHandler(get_logger_fname(name), mode='w')
+  handler.setFormatter(logging.Formatter(log_format))
+
+  logger.addHandler(handler)
+
+  # Possible log levels (uncomment one as needed):
+  # logger.setLevel(logging.NOTSET)    # Log all messages (lowest threshold)
+  # logger.setLevel(logging.INFO)      # Log INFO, WARNING, ERROR, CRITICAL
+  # logger.setLevel(logging.DEBUG)       # Log DEBUG and above (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  logger.setLevel(logging.CRITICAL)  # Log only CRITICAL messages. This effectively disables all other messages.
+
+  return logger
+
 
 def get_logger_fname(name):
- """
- Function to create consistent logger file name with date and time appended to end.
+  """
+  Generate a standardized log filename for the given logger name, including a timestamp.
 
- Args:
-   name (str): Name of the logger
+  The log files are placed in the 'logfiles' directory.
+  If the directory does not exist, it is created.
 
- Returns:
-   str: Path to the log file
- """
- current_datetime = datetime.now().strftime("%Y%m%d_%H%M%S")  # Format: YYYYMMDD_HHMMSS
- log_dir = 'logfiles'
+  Args:
+    name (str): Logger name or application name to include in the log filename.
 
- if not os.path.exists(log_dir):
-   os.makedirs(log_dir)
+  Returns:
+    str: Full path to the log file.
+  """
 
- # Return the filename with path in the logfiles directory
- return os.path.join(log_dir, 'logging_{}_{}.log'.format(name, current_datetime))
+  current_datetime = datetime.now().strftime("%Y%m%d_%H%M%S")  # YYYYMMDD_HHMMSS format
+  log_dir = 'logfiles'
+
+  if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+  return os.path.join(log_dir, f'logging_{name}_{current_datetime}.log')
+
 
 def log_stream_content(stdin, stdout, stderr, logger):
- """
- Log content from stdin, stdout, and stderr streams using the given logger.
+  """
+  Read from stdin, stdout, and stderr streams and log their contents using the provided logger.
 
- Args:
-   stdin: Standard input stream
-   stdout: Standard output stream
-   stderr: Standard error stream
-   logger: Logger instance to use for logging
- """
- try:
-   stdin_content = stdin.read().decode('utf-8')
-   if stdin_content:
-     logger.debug("STDIN: %s", stdin_content)
- except:
-   pass
+  If any of these streams contain data, it will be logged at the DEBUG level.
+  This function is useful when capturing the output of subprocesses or other external commands.
 
- try:
-   stdout_content = stdout.read().decode('utf-8')
-   if stdout_content:
-     logger.debug("STDOUT: %s", stdout_content)
- except:
-   pass
+  Args:
+    stdin:  Input stream to read as standard input.
+    stdout: Output stream to read as standard output.
+    stderr: Error stream to read as standard error.
+    logger (logging.Logger): Logger to write the contents.
+  """
 
- try:
-   stderr_content = stderr.read().decode('utf-8')
-   if stderr_content:
-     logger.debug("STDERR: %s", stderr_content)
- except:
-   pass
+  try:
+    stdin_content = stdin.read().decode('utf-8')
+    if stdin_content:
+      logger.debug("STDIN: %s", stdin_content)
+  except Exception:
+    pass
+
+  try:
+    stdout_content = stdout.read().decode('utf-8')
+    if stdout_content:
+      logger.debug("STDOUT: %s", stdout_content)
+  except Exception:
+    pass
+
+  try:
+    stderr_content = stderr.read().decode('utf-8')
+    if stderr_content:
+      logger.debug("STDERR: %s", stderr_content)
+  except Exception:
+    pass

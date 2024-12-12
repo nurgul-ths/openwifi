@@ -16,6 +16,7 @@ from owpy.openwifi.udp import UDPHandler
 # We require some globals from the data_parsers module so we import all of it here
 from owpy.capture.data_parsers import *
 from owpy.logging.logging import create_logger
+from owpy.apps.misc import beep_start, beep_end, beep_1_minute
 
 logger = create_logger("iq_capture_app")
 logger.info('iq_capture_app() started')
@@ -106,6 +107,9 @@ def iq_capture_app_udp(params, verbose=0, queue_rx_data_capture=None, queue_tx_d
           openwifi_data_dict["local_machine_last_sample_unix"]  = start
           print(f"First sample time: {openwifi_data_dict['local_machine_first_sample_unix']}")
 
+          if params.beep:
+            beep_start()
+
         if data_type_idx == DATA_TYPE_LIST['iq']:
           n_frames, data_dict = process_and_save_iq(queue_data, fd_dict, iq_num_dma_symbol_per_trans, params, logger)
         elif data_type_idx == DATA_TYPE_LIST['csi']:
@@ -147,12 +151,16 @@ def iq_capture_app_udp(params, verbose=0, queue_rx_data_capture=None, queue_tx_d
 
   print_capture_info(start, end, frame_idx)
 
+  if params.beep:
+    beep_end()
 
-  logger.info("data_gen_enable: %s", params.data_gen_enable)
-  logger.info("queue_tx_data_gen: %s", queue_tx_data_gen)
-  if params.data_gen_enable and queue_tx_data_gen is not None:
-    logger.info("Sending exit command to data generator")
-    queue_tx_data_gen.put_nowait('exit')
+  # Check first if data_gen_enable is a parameter
+  if hasattr(params, 'data_gen_enable'):
+    logger.info("data_gen_enable: %s", params.data_gen_enable)
+    logger.info("queue_tx_data_gen: %s", queue_tx_data_gen)
+    if params.data_gen_enable and queue_tx_data_gen is not None:
+      logger.info("Sending exit command to data generator")
+      queue_tx_data_gen.put_nowait('exit')
 
 
 def continue_loop(params, start, frame_idx, shutdown_event, max_wait_time=60):

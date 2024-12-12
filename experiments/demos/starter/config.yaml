@@ -1,0 +1,39 @@
+# Default settings for starter demo
+
+#==============================================================================
+openwifi:
+
+  openwifi_enable: 1
+  save_data: 1
+  exp_dataset: "test"
+  exp_fname_param_list: "label"
+  capture_mode: "udp"
+
+  room: "room"
+  location: ""
+  ref_file_name: ""
+  board_name: "zed_fmcs2"
+  system_mode: "monostatic"
+  data_type: "tx_rx_iq0"
+  header: "timestamp_tx_intf_iq0_sample0_100M"
+  loop_type: "air"
+  freq: 13
+
+  rf_tx0_atten: 0
+  rf_tx1_atten: -85
+  rf_rx0_gain: 0
+  rf_rx1_gain: 0
+
+  iq_len: 4092
+
+  rx_start_pkt: 68
+  bb_start_pkt: 0
+
+  ant_arrangement: "tx0:0cm rx0:25cm rx1:30cm"
+
+  exp_name: test_name
+  exp_descr: ""
+
+  label: ""
+
+  sampling_time: 10

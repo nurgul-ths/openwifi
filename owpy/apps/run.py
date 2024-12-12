@@ -3,7 +3,6 @@
 
 import time
 import shutil
-import os
 
 from owpy.apps.capture_iq_app_udp import iq_capture_app_udp
 from owpy.apps.misc import print_sampling_time
@@ -28,6 +27,7 @@ def run_capture(params):
     time.sleep(params.sampling_delay)
 
   print_sampling_time(params.sampling_time)
+
   iq_capture_app_udp(params)
 
   print("\nData collection finished\n")
@@ -49,6 +49,7 @@ def run(params):
   #=============================================================================
   # Check settings
   #=============================================================================
+
   if params.check_settings:
     user_input = input("Continue with these settings [y/n]? ")
     if user_input.lower() not in ['y', 'yes']:
@@ -91,6 +92,7 @@ def run(params):
     # Copy over the TX data file if we get 2 RX
     #===========================================================================
     if params.data_type == "rx_iq0_iq1" and params.save_data:
+
       # Define the source and destination paths for the TX data file
       tx_file_source    = os.path.join("scripts_openwifi/arbitrary_iq_gen/data_gen/output", params.iqa_fname)
       tx_file_real_dest = f"{params.fname_base}_{TX_IQ0_REAL}.csv"
@@ -112,4 +114,5 @@ def run(params):
     #===========================================================================
     # Run the capture
     #===========================================================================
+
     run_capture(params)
