@@ -17,7 +17,7 @@ repoPath          = '../';
 
 % Dataset and file list definitions
 datasets = {
-  'respiration_test', 1:3
+  'respiration_test', 4
 };
 
 % Loop through all datasets
