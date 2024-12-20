@@ -7,15 +7,13 @@ To run the demo, go to [experiments/demos/starter](experiments/demos/starter) an
 Pre-requisites:
 - You can download the sd card image from [here](https://drive.google.com/file/d/1uQMX8zfUFNDDfW1cvrgORAVHtUJXXgkP/view?usp=sharing)
 
-I use the following conda environment to run the scripts:
-
+You need a python environment with
 ```bash
 conda config --append channels conda-forge
 conda create -n openwifi python=3.9
 conda activate openwifi
 conda install pandas paramiko pyyaml
 ```
-
 
 ## Post-Processing the Data
 

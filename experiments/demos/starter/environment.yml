@@ -1,0 +1,47 @@
+name: wcnc
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - _libgcc_mutex=0.1=main
+  - _openmp_mutex=5.1=1_gnu
+  - bcrypt=3.2.0=py39h5eee18b_1
+  - blas=1.0=openblas
+  - bottleneck=1.4.2=py39ha9d4c09_0
+  - ca-certificates=2024.11.26=h06a4308_0
+  - cffi=1.17.1=py39h1fdaa30_0
+  - cryptography=43.0.3=py39h7825ff9_1
+  - ld_impl_linux-64=2.40=h12ee557_0
+  - libffi=3.4.4=h6a678d5_1
+  - libgcc-ng=11.2.0=h1234567_1
+  - libgfortran-ng=11.2.0=h00389a5_1
+  - libgfortran5=11.2.0=h1234567_1
+  - libgomp=11.2.0=h1234567_1
+  - libopenblas=0.3.21=h043d6bf_0
+  - libsodium=1.0.18=h7b6447c_0
+  - libstdcxx-ng=11.2.0=h1234567_1
+  - ncurses=6.4=h6a678d5_0
+  - numexpr=2.10.1=py39hd28fd6d_0
+  - numpy=2.0.1=py39heeff2f4_1
+  - numpy-base=2.0.1=py39h8a23956_1
+  - openssl=3.0.15=h5eee18b_0
+  - pandas=2.2.3=py39h6a678d5_0
+  - paramiko=3.5.0=py39h06a4308_0
+  - pip=24.2=py39h06a4308_0
+  - pycparser=2.21=pyhd3eb1b0_0
+  - pynacl=1.5.0=py39h5eee18b_0
+  - python=3.9.21=he870216_1
+  - python-dateutil=2.9.0post0=py39h06a4308_2
+  - python-tzdata=2023.3=pyhd3eb1b0_0
+  - pytz=2024.1=py39h06a4308_0
+  - pyyaml=6.0.2=py39h5eee18b_0
+  - readline=8.2=h5eee18b_0
+  - setuptools=75.1.0=py39h06a4308_0
+  - six=1.16.0=pyhd3eb1b0_1
+  - sqlite=3.45.3=h5eee18b_0
+  - tk=8.6.14=h39e8969_0
+  - tzdata=2024b=h04d1e81_0
+  - wheel=0.44.0=py39h06a4308_0
+  - xz=5.4.6=h5eee18b_1
+  - yaml=0.2.5=h7b6447c_0
+  - zlib=1.2.13=h5eee18b_1

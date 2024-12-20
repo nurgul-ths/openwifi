@@ -30,29 +30,51 @@ from owpy.files.files import *
 # Bit conversion
 #==============================================================================
 
+# def get_uint64(side_info, start_idx):
+#   """Reconstructs a 64-bit unsigned from 4 16-bit values (unsigned)"""
+
+#   side_info_subset = side_info[:,start_idx:start_idx+4]
+
+#   side_info_uint64 = \
+#                 side_info_subset[:,0] \
+#     + pow(2,16)*side_info_subset[:,1] \
+#     + pow(2,32)*side_info_subset[:,2] \
+#     + pow(2,48)*side_info_subset[:,3]
+
+#   return side_info_uint64
+
+# def get_uint32(side_info, start_idx):
+#   """Reconstructs a 32-bit unsigned from 2 16-bit values (unsigned)"""
+
+#   side_info_subset = side_info[:,start_idx:start_idx+2]
+
+#   side_info_uint32 = \
+#                 side_info_subset[:,0] \
+#     + pow(2,16)*side_info_subset[:,1]
+
+#   return side_info_uint32
+
+# Update for numpy 2.0
 def get_uint64(side_info, start_idx):
-  """Reconstructs a 64-bit unsigned from 4 16-bit values (unsigned)"""
-
-  side_info_subset = side_info[:,start_idx:start_idx+4]
-
-  side_info_uint64 = \
-                side_info_subset[:,0] \
-    + pow(2,16)*side_info_subset[:,1] \
-    + pow(2,32)*side_info_subset[:,2] \
-    + pow(2,48)*side_info_subset[:,3]
-
-  return side_info_uint64
+    """Reconstructs a 64-bit unsigned from 4 16-bit values (unsigned)"""
+    side_info_subset = side_info[:,start_idx:start_idx+4]
+    side_info_uint64 = (
+        side_info_subset[:,0].astype(np.uint64)
+        + (np.uint64(2**16) * side_info_subset[:,1].astype(np.uint64))
+        + (np.uint64(2**32) * side_info_subset[:,2].astype(np.uint64))
+        + (np.uint64(2**48) * side_info_subset[:,3].astype(np.uint64))
+    )
+    return side_info_uint64
 
 def get_uint32(side_info, start_idx):
-  """Reconstructs a 32-bit unsigned from 2 16-bit values (unsigned)"""
+    """Reconstructs a 32-bit unsigned from 2 16-bit values (unsigned)"""
+    side_info_subset = side_info[:,start_idx:start_idx+2]
+    side_info_uint32 = (
+        side_info_subset[:,0].astype(np.uint32)
+        + (np.uint32(2**16) * side_info_subset[:,1].astype(np.uint32))
+    )
+    return side_info_uint32
 
-  side_info_subset = side_info[:,start_idx:start_idx+2]
-
-  side_info_uint32 = \
-                side_info_subset[:,0] \
-    + pow(2,16)*side_info_subset[:,1]
-
-  return side_info_uint32
 
 #==============================================================================
 # CSI
@@ -604,50 +626,3 @@ def is_abnormal_length(queue_data, data_type_idx, iq_bytes_per_trans, csi_bytes_
       return True
 
   return False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

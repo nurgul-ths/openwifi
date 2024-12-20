@@ -17,21 +17,21 @@ You will need these terminals:
 
 **Host Computer Terminals:**
 1. **Host Root Terminal**
-   - Used only for Python control commands
-   - Must stay in the Git repository root directory
+  - Used only for Python control commands
+  - Must stay in the Git repository root directory
 
 2. **Host Experiment Terminal**
-   - Used for board setup (make init/setup) and data collection
-   - Must stay in `experiments/demos/starter` directory
+  - Used for board setup (make init/setup) and data collection
+  - Must stay in `experiments/demos/starter` directory
 
 **OpenWiFi Board Terminals:**
 1. **Board Main Terminal**
-   - Primary terminal for running commands on the board
-   - Stays in the `openwifi` directory on the board
+  - Primary terminal for running commands on the board
+  - Stays in the `openwifi` directory on the board
 
 2. **Board Monitor Terminal**
-   - Dedicated to running `./side_ch_ctl g0`
-   - Stays in the `openwifi` directory on the board
+  - Dedicated to running `./side_ch_ctl g0`
+  - Stays in the `openwifi` directory on the board
 
 ## Initial Setup
 
@@ -42,38 +42,38 @@ ssh root@192.168.10.122
 without being prompted for a password. This is required for the automated scripts.
 
 1. **Connect to the OpenWiFi Board**
-   In both the **Board Main Terminal** and **Board Monitor Terminal**:
-   ```bash
-   ssh root@192.168.10.122
-   cd openwifi
-   ```
+  In both the **Board Main Terminal** and **Board Monitor Terminal**:
+  ```bash
+  ssh root@192.168.10.122
+  cd openwifi
+  ```
 
 2. **Initialize the Board (Host Experiment Terminal)**
-   Before running the following command, verify that you are in the `experiments/demos/starter` directory on your host computer:
-   ```bash
-   cd experiments/demos/starter
-   make init && make setup
-   ```
-   This command prints details verbosely, allowing you to verify the setup.
+  Before running the following command, verify that you are in the `experiments/demos/starter` directory on your host computer:
+  ```bash
+  cd experiments/demos/starter
+  make init && make setup
+  ```
+  This command prints details verbosely, allowing you to verify the setup.
 
 3. **Check the System (Board Monitor Terminal)**
-   Immediately after booting, run:
-   ```bash
-   ./side_ch_ctl g0
-   ```
+  Immediately after booting, run:
+  ```bash
+  ./side_ch_ctl g0
+  ```
 
-   You should see statistics like:
-   ```
-   Statistics (end):
-     side info count 49
-     side info dma symbol count 200655
-     udp count 49
-     udp dma symbol count 200655
-     file count 0
-     file dma symbol count 0
-   ```
+  You should see statistics like:
+  ```
+  Statistics (end):
+    side info count 49
+    side info dma symbol count 200655
+    udp count 49
+    udp dma symbol count 200655
+    file count 0
+    file dma symbol count 0
+  ```
 
-   If the `side info count` is `0`, power cycle the board by turning it off and on again, then re-run the command. The `udp count` should match the `side info count`, indicating successful sample transmission over UDP.
+  If the `side info count` is `0`, power cycle the board by turning it off and on again, then re-run the command. The `udp count` should match the `side info count`, indicating successful sample transmission over UDP. Note that as we have a file system, please run `sudo shutdown -h now` to power off the board and then wait a few seconds before before turning off the power and turning it back on.
 
 ## Data Transmission
 
