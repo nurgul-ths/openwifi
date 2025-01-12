@@ -1,0 +1,269 @@
+root@analog:~# sudo dmesg
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 5.10.0-98248-g1bbe32fa5182-dirty (andreas@andreas-home) (arm-xilinx-linux-gnueabi-gcc.real (GCC) 10.2.0, GNU ld (GNU Binutils) 2.35.0.20200730) #2 SMP PREEMPT Wed Feb 28 12:50:21 CET 2024
+[    0.000000] CPU: ARMv7 Processor [413fc090] revision 0 (ARMv7), cr=18c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt: Machine model: Xilinx Zynq ZED
+[    0.000000] OF: fdt: earlycon: stdout-path /amba@0/uart@E0001000 not found
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] cma: Reserved 128 MiB at 0x16800000
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000000000000-0x000000001fffffff]
+[    0.000000]   HighMem  empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x000000001fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x000000001fffffff]
+[    0.000000] On node 0 totalpages: 131072
+[    0.000000]   Normal zone: 1024 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 131072 pages, LIFO batch:31
+[    0.000000] percpu: Embedded 15 pages/cpu s29900 r8192 d23348 u61440
+[    0.000000] pcpu-alloc: s29900 r8192 d23348 u61440 alloc=15*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 130048
+[    0.000000] Kernel command line: console=ttyPS0,115200 root=/dev/mmcblk0p2 rw earlycon rootfstype=ext4 rootwait clk_ignore_unused cpuidle.off=1
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 371436K/524288K available (8192K kernel code, 803K rwdata, 5732K rodata, 1024K init, 151K bss, 21780K reserved, 131072K cma-reserved, 0K highmem)
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] efuse mapped to (ptrval)
+[    0.000000] slcr mapped to (ptrval)
+[    0.000000] L2C: platform modifies aux control register: 0x72360000 -> 0x72760000
+[    0.000000] L2C: DT/platform modifies aux control register: 0x72360000 -> 0x72760000
+[    0.000000] L2C-310 erratum 769419 enabled
+[    0.000000] L2C-310 enabling early BRESP for Cortex-A9
+[    0.000000] L2C-310 full line of zeros enabled for Cortex-A9
+[    0.000000] L2C-310 ID prefetch enabled, offset 1 lines
+[    0.000000] L2C-310 dynamic clock gating enabled, standby mode enabled
+[    0.000000] L2C-310 cache controller enabled, 8 ways, 512 kB
+[    0.000000] L2C-310: CACHE_ID 0x410000c8, AUX_CTRL 0x76760001
+[    0.000000] random: get_random_bytes called from start_kernel+0x33c/0x4dc with crng_init=0
+[    0.000000] zynq_clock_init: clkc starts at (ptrval)
+[    0.000000] Zynq clock init
+[    0.000009] sched_clock: 64 bits at 333MHz, resolution 3ns, wraps every 4398046511103ns
+[    0.000029] clocksource: arm_global_timer: mask: 0xffffffffffffffff max_cycles: 0x4ce07af025, max_idle_ns: 440795209040 ns
+[    0.000055] Switching to timer-based delay loop, resolution 3ns
+[    0.000143] clocksource: ttc_clocksource: mask: 0xffff max_cycles: 0xffff, max_idle_ns: 537538477 ns
+[    0.000180] timer #0 at (ptrval), irq=25
+[    0.000709] Console: colour dummy device 80x30
+[    0.000737] Calibrating delay loop (skipped), value calculated using timer frequency.. 666.66 BogoMIPS (lpj=3333333)
+[    0.000755] pid_max: default: 32768 minimum: 301
+[    0.000929] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.000944] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.001575] CPU: Testing write buffer coherency: ok
+[    0.001609] CPU0: Spectre v2: using BPIALL workaround
+[    0.001769] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.002266] Setting up static identity map for 0x100000 - 0x100060
+[    0.002404] rcu: Hierarchical SRCU implementation.
+[    0.002694] smp: Bringing up secondary CPUs ...
+[    0.003462] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.003472] CPU1: Spectre v2: using BPIALL workaround
+[    0.003609] smp: Brought up 1 node, 2 CPUs
+[    0.003622] SMP: Total of 2 processors activated (1333.33 BogoMIPS).
+[    0.003630] CPU: All CPU(s) started in SVC mode.
+[    0.004095] devtmpfs: initialized
+[    0.007719] VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+[    0.008187] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.008213] futex hash table entries: 512 (order: 3, 32768 bytes, linear)
+[    0.014241] pinctrl core: initialized pinctrl subsystem
+[    0.015364] NET: Registered protocol family 16
+[    0.017507] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.018845] thermal_sys: Registered thermal governor 'step_wise'
+[    0.029948] irq: type mismatch, failed to map hwirq-69 for interrupt-controller@f8f01000!
+[    0.036867] irq: type mismatch, failed to map hwirq-69 for interrupt-controller@f8f01000!
+[    0.039969] hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+[    0.039983] hw-breakpoint: maximum watchpoint size is 4 bytes.
+[    0.040124] zynq-ocm f800c000.ocmc: ZYNQ OCM pool: 256 KiB @ 0x(ptrval)
+[    0.041049] e0001000.serial: ttyPS0 at MMIO 0xe0001000 (irq = 33, base_baud = 3125000) is a xuartps
+[    0.433486] printk: console [ttyPS0] enabled
+[    0.469284] SCSI subsystem initialized
+[    0.472067] usbcore: registered new interface driver usbfs
+[    0.476311] usbcore: registered new interface driver hub
+[    0.480448] usbcore: registered new device driver usb
+[    0.484495] mc: Linux media interface: v0.10
+[    0.487503] videodev: Linux video capture interface: v2.00
+[    0.491874] pps_core: LinuxPPS API ver. 1 registered
+[    0.495528] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.503660] PTP clock support registered
+[    0.506678] jesd204: found 0 devices and 0 topologies
+[    0.510503] FPGA manager framework
+[    0.512675] Advanced Linux Sound Architecture Driver Initialized.
+[    0.518879] clocksource: Switched to clocksource arm_global_timer
+[    0.534093] NET: Registered protocol family 2
+[    0.538185] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 6144 bytes, linear)
+[    0.545282] TCP established hash table entries: 4096 (order: 2, 16384 bytes, linear)
+[    0.551770] TCP bind hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.557660] TCP: Hash tables configured (established 4096 bind 4096)
+[    0.562809] UDP hash table entries: 256 (order: 1, 8192 bytes, linear)
+[    0.568046] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes, linear)
+[    0.573830] NET: Registered protocol family 1
+[    0.577288] hw perfevents: no interrupt-affinity property for /pmu@f8891000, guessing.
+[    0.584130] hw perfevents: enabled with armv7_cortex_a9 PMU driver, 7 counters available
+[    0.592249] Initialise system trusted keyrings
+[    0.595535] workingset: timestamp_bits=30 max_order=17 bucket_order=0
+[    0.711258] Key type asymmetric registered
+[    0.714047] Asymmetric key parser 'x509' registered
+[    0.717627] io scheduler mq-deadline registered
+[    0.720865] io scheduler kyber registered
+[    0.723907] zynq-pinctrl 700.pinctrl: zynq pinctrl initialized
+[    0.731691] dma-pl330 f8003000.dmac: Loaded driver for PL330 DMAC-241330
+[    0.737090] dma-pl330 f8003000.dmac: 	DBUFF-128x8bytes Num_Chans-8 Num_Peri-4 Num_Events-16
+[    0.754192] brd: module loaded
+[    0.764118] loop: module loaded
+[    0.770514] spi-nor spi2.0: found s25fl256s1, expected n25q128a11
+[    0.775494] spi-nor spi2.0: s25fl256s1 (32768 Kbytes)
+[    0.779360] 5 fixed-partitions partitions found on MTD device spi2.0
+[    0.784406] Creating 5 MTD partitions on "spi2.0":
+[    0.787890] 0x000000000000-0x000000500000 : "boot"
+[    0.799715] 0x000000500000-0x000000520000 : "bootenv"
+[    0.810144] 0x000000520000-0x000000540000 : "config"
+[    0.819712] 0x000000540000-0x000000fc0000 : "image"
+[    0.829922] 0x000000fc0000-0x000002000000 : "spare"
+[    0.840013] MACsec IEEE 802.1AE
+[    0.842447] libphy: Fixed MDIO Bus: probed
+[    0.845978] tun: Universal TUN/TAP device driver, 1.6
+[    0.851483] libphy: MACB_mii_bus: probed
+[    0.855438] macb e000b000.ethernet eth0: Cadence GEM rev 0x00020118 at 0xe000b000 irq 37 (00:0a:35:00:01:22)
+[    0.864740] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    0.870077] usbcore: registered new interface driver usb-storage
+[    0.874900] usbcore: registered new interface driver usbserial_generic
+[    0.880178] usbserial: USB Serial support registered for generic
+[    0.884922] usbcore: registered new interface driver ftdi_sio
+[    0.889412] usbserial: USB Serial support registered for FTDI USB Serial Device
+[    0.948903] ULPI transceiver vendor/product ID 0x0451/0x1507
+[    0.953250] Found TI TUSB1210 ULPI transceiver.
+[    0.956477] ULPI integrity check: passed.
+[    0.959216] ci_hdrc ci_hdrc.0: EHCI Host Controller
+[    0.962809] ci_hdrc ci_hdrc.0: new USB bus registered, assigned bus number 1
+[    0.988924] ci_hdrc ci_hdrc.0: USB 2.0 started, EHCI 1.00
+[    0.993747] hub 1-0:1.0: USB hub found
+[    0.996227] hub 1-0:1.0: 1 port detected
+[    1.001096] i2c /dev entries driver
+[    1.004623] at24 0-0050: supply vcc not found, using dummy regulator
+[    1.010521] at24 0-0050: 256 byte 24c02 EEPROM, writable, 1 bytes/write
+[    1.016283] IR NEC protocol handler initialized
+[    1.019571] IR RC5(x/sz) protocol handler initialized
+[    1.023313] IR RC6 protocol handler initialized
+[    1.026524] IR JVC protocol handler initialized
+[    1.029754] IR Sony protocol handler initialized
+[    1.033060] IR SANYO protocol handler initialized
+[    1.036445] IR Sharp protocol handler initialized
+[    1.039863] IR MCE Keyboard/mouse protocol handler initialized
+[    1.044379] IR XMP protocol handler initialized
+[    1.047937] usbcore: registered new interface driver uvcvideo
+[    1.052412] USB Video Class driver (1.1.1)
+[    1.055195] gspca_main: v2.14.0 registered
+[    1.059509] cdns-wdt f8005000.watchdog: Xilinx Watchdog Timer with timeout 10s
+[    1.065813] Xilinx Zynq CpuIdle Driver started
+[    1.068996] failed to register cpuidle driver
+[    1.072535] sdhci: Secure Digital Host Controller Interface driver
+[    1.077408] sdhci: Copyright(c) Pierre Ossman
+[    1.080481] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.086895] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.091758] hid: raw HID events driver (C) Jiri Kosina
+[    1.098827] usbcore: registered new interface driver usbhid
+[    1.104610] usbhid: USB HID core driver
+[    1.111564] mmc0: SDHCI controller on e0100000.mmc [e0100000.mmc] using ADMA
+[    1.120224] adf4350 spi1.0: supply vcc not found, using dummy regulator
+[    1.126030] adf4350 spi1.0: Probe failed (muxout)
+[    1.130081] adf4350 spi1.1: supply vcc not found, using dummy regulator
+[    1.135813] adf4350 spi1.1: Probe failed (muxout)
+[    1.141875] fpga_manager fpga0: Xilinx Zynq FPGA Manager registered
+[    1.150335] xt_time: kernel timezone is -0000
+[    1.154001] ipt_CLUSTERIP: ClusterIP Version 0.8 loaded successfully
+[    1.159354] NET: Registered protocol family 17
+[    1.162599] mmc0: new high speed SDHC card at address aaaa
+[    1.167303] Registering SWP/SWPB emulation handler
+[    1.171133] Loading compiled-in X.509 certificates
+[    1.171204] mmcblk0: mmc0:aaaa SC16G 14.8 GiB
+[    1.183020]  mmcblk0: p1 p2 p3
+[    1.184236] clk: Not disabling unused clocks
+[    1.187729] ALSA device list:
+[    1.189464]   No soundcards found.
+[    1.222705] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+[    1.229574] VFS: Mounted root (ext4 filesystem) on device 179:2.
+[    1.245820] devtmpfs: mounted
+[    1.248985] Freeing unused kernel memory: 1024K
+[    1.289322] Run /sbin/init as init process
+[    1.292110]   with arguments:
+[    1.292115]     /sbin/init
+[    1.292119]   with environment:
+[    1.292124]     HOME=/
+[    1.292128]     TERM=linux
+[    1.444917] random: fast init done
+[    1.880785] systemd[1]: System time before build time, advancing clock.
+[    1.930395] systemd[1]: Failed to find module 'autofs4'
+[    2.554360] NET: Registered protocol family 10
+[    2.558484] Segment Routing with IPv6
+[    2.586282] systemd[1]: systemd 247.3-7+rpi1 running in system mode. (+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +ZSTD +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=unified)
+[    2.608311] systemd[1]: Detected architecture arm.
+[    2.661943] systemd[1]: Set hostname to <analog>.
+[    4.449381] systemd[1]: /lib/systemd/system/plymouth-start.service:16: Unit configured to use KillMode=none. This is unsafe, as it disables systemd's process lifecycle management for the service. Please update your service to use a safer KillMode=, such as 'mixed' or 'control-group'. Support for KillMode=none is deprecated and will eventually be removed.
+[    4.809555] systemd[1]: Queued start job for default target Graphical Interface.
+[    4.817563] random: systemd: uninitialized urandom read (16 bytes read)
+[    4.823207] systemd[1]: system-getty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[    4.834292] systemd[1]: (This warning is only shown for the first unit using IP firewalling.)
+[    4.842554] systemd[1]: Created slice system-getty.slice.
+[    4.879107] random: systemd: uninitialized urandom read (16 bytes read)
+[    4.885213] systemd[1]: Created slice system-modprobe.slice.
+[    4.919085] random: systemd: uninitialized urandom read (16 bytes read)
+[    4.925151] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[    4.959836] systemd[1]: Created slice system-systemd\x2dfsck.slice.
+[    4.999559] systemd[1]: Created slice User and Session Slice.
+[    5.039498] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[    5.079469] systemd[1]: Condition check resulted in Arbitrary Executable File Formats File System Automount Point being skipped.
+[    5.091069] systemd[1]: Reached target Slices.
+[    5.119277] systemd[1]: Reached target Swap.
+[    5.150217] systemd[1]: Listening on fsck to fsckd communication Socket.
+[    5.189462] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[    5.256665] systemd[1]: Condition check resulted in Journal Audit Socket being skipped.
+[    5.264397] systemd[1]: Listening on Journal Socket (/dev/log).
+[    5.300029] systemd[1]: Listening on Journal Socket.
+[    5.332842] systemd[1]: Listening on udev Control Socket.
+[    5.369752] systemd[1]: Listening on udev Kernel Socket.
+[    5.409892] systemd[1]: Condition check resulted in Huge Pages File System being skipped.
+[    5.417343] systemd[1]: Condition check resulted in POSIX Message Queue File System being skipped.
+[    5.428123] systemd[1]: Mounting RPC Pipe File System...
+[    5.463821] systemd[1]: Mounting Kernel Debug File System...
+[    5.499626] systemd[1]: Condition check resulted in Kernel Trace File System being skipped.
+[    5.507034] systemd[1]: Condition check resulted in Kernel Module supporting RPCSEC_GSS being skipped.
+[    5.522157] systemd[1]: Starting Restore / save the current clock...
+[    5.564329] systemd[1]: Starting Set the console keyboard layout...
+[    5.599392] systemd[1]: Condition check resulted in Create list of static device nodes for the current kernel being skipped.
+[    5.614074] systemd[1]: Starting Load Kernel Module configfs...
+[    5.653546] systemd[1]: Starting Load Kernel Module drm...
+[    5.682405] systemd[1]: Starting Load Kernel Module fuse...
+[    5.714779] systemd[1]: Condition check resulted in Set Up Additional Binary Formats being skipped.
+[    5.723035] systemd[1]: Condition check resulted in File System Check on Root Device being skipped.
+[    5.734283] systemd[1]: Starting Journal Service...
+[    5.766855] systemd[1]: Starting Load Kernel Modules...
+[    5.812226] systemd[1]: Starting Remount Root and Kernel File Systems...
+[    5.852513] systemd[1]: Starting Coldplug All udev Devices...
+[    5.888083] systemd[1]: run-rpc_pipefs.mount: Mount process exited, code=exited, status=32/n/a
+[    5.923787] systemd[1]: run-rpc_pipefs.mount: Failed with result 'exit-code'.
+[    5.944152] systemd[1]: Failed to mount RPC Pipe File System.
+[    6.019102] systemd[1]: Dependency failed for RPC security service for NFS client and server.
+[    6.059170] systemd[1]: rpc-gssd.service: Job rpc-gssd.service/start failed with result 'dependency'.
+[    6.067260] systemd[1]: Dependency failed for RPC security service for NFS server.
+[    6.119104] systemd[1]: rpc-svcgssd.service: Job rpc-svcgssd.service/start failed with result 'dependency'.
+[    6.142708] systemd[1]: Started Journal Service.
+[    6.263016] random: crng init done
+[    6.270563] random: 7 urandom warning(s) missed due to ratelimiting
+[    6.583979] EXT4-fs (mmcblk0p2): re-mounted. Opts: (null)
+[    6.893864] systemd-journald[1084]: Received client request to flush runtime journal.
+[   11.541288] macb e000b000.ethernet eth0: PHY [e000b000.ethernet-ffffffff:00] driver [Marvell 88E1510] (irq=POLL)
+[   11.541319] macb e000b000.ethernet eth0: configuring for phy/rgmii-id link mode
+[   11.849020] 8021q: 802.1Q VLAN Support v1.8
+[   12.479133] Adding 102396k swap on /var/swap.  Priority:-2 extents:1 across:102396k SS
+[   12.513167] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[   12.603405] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[   12.630308] cfg80211: loaded regulatory.db is malformed or signature is missing/invalid
+[   13.612754] macb e000b000.ethernet eth0: Link is Up - 100Mbps/Full - flow control tx
+[   13.612798] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready

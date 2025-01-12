@@ -1,0 +1,209 @@
+(wcnc) andreas@andreas-home:~/github/wcnc2024_monostatic_sensing_openwifi/experiments/demos/starter$ make setup
+cd /home/andreas/github/wcnc2024_monostatic_sensing_openwifi; python run_exp.py --action=setup --yaml-file=/home/andreas/github/wcnc2024_monostatic_sensing_openwifi/experiments/demos/starter//config.yaml
+Runing capture with action setup
+ssh root@192.168.10.122 'bash -s' < scripts/capture/set_gains.sh zed_fmcs2 monostatic tx_rx_iq0 air 0 0 0 0 -85 0 0 256 0
++ ./sdrctl dev sdr0 set reg tx_intf 13 256
+reg  cat: 3
+reg addr: 00030034
+reg  val: 00000100
++ ./sdrctl dev sdr0 set reg rx_intf 11 0
+reg  cat: 2
+reg addr: 0002002c
+reg  val: 00000000
++ ./sdrctl dev sdr0 set reg rf 0 0
+reg  cat: 1
+reg addr: 00010000
+reg  val: 00000000
++ [[ air == \i\n\t ]]
++ [[ air == \c\a\b\l\e\d ]]
++ [[ air == \a\i\r ]]
++ echo 'Configuring board for external loopback'
+Configuring board for external loopback
++ [[ zed_fmcs2 == \z\e\d\_\f\m\c\s\2 ]]
+++ pwd
++ home_dir=/root/openwifi
++ for dev in {0..4}
++ test -f /sys/bus/iio/devices/iio:device0/in_voltage_rf_bandwidth
++ for dev in {0..4}
++ test -f /sys/bus/iio/devices/iio:device1/in_voltage_rf_bandwidth
++ for dev in {0..4}
++ test -f /sys/bus/iio/devices/iio:device2/in_voltage_rf_bandwidth
++ cd /sys/bus/iio/devices/iio:device2/
++ break
++ echo 1
+bash: line 68: restrict_freq_mhz: Permission denied
++ cat restrict_freq_mhz
+cat: restrict_freq_mhz: No such file or directory
++ '[' '!' -f in_voltage_rf_bandwidth ']'
++ [[ 0 == 0 ]]
++ echo manual
++ cat in_voltage0_gain_control_mode
+manual
++ [[ 0 -ge -3 ]]
++ echo 0
++ [[ 0 == 1 ]]
++ [[ tx_rx_iq0 == \r\x\_\i\q\0\_\i\q\1 ]]
++ [[ tx_rx_iq0 == \i\q\_\a\l\l ]]
++ echo slow_attack
++ cat in_voltage0_hardwaregain
+0.000000 dB
++ cat in_voltage1_hardwaregain
+71.000000 dB
++ [[ 0 == 1 ]]
++ [[ 0 == 1 ]]
++ echo 0
++ echo 'tx0 gain'
+tx0 gain
++ cat out_voltage0_hardwaregain
+0.000000 dB
++ echo 'tx1 gain'
+tx1 gain
++ cat out_voltage1_hardwaregain
+-89.750000 dB
++ cd /root/openwifi
++ set +x
+ssh root@192.168.10.122 'bash -s' < scripts/capture/set_misc.sh 1
++ ./sdrctl dev sdr0 set reg tx_intf 3 0
+reg  cat: 3
+reg addr: 0003000c
+reg  val: 00000000
++ ./sdrctl dev sdr0 set reg tx_intf 13 0
+reg  cat: 3
+reg addr: 00030034
+reg  val: 00000000
++ ./sdrctl dev sdr0 set reg rx 5 769
+reg  cat: 4
+reg addr: 00040014
+reg  val: 00000301
++ set +x
+ssh root@192.168.10.122 'bash -s' < scripts/capture/set_loopback.sh zed_fmcs2 monostatic air 0 0 0 0
++ [[ monostatic == \m\o\n\o\s\t\a\t\i\c ]]
++ echo 'Configuring board for monostatic capture'
+Configuring board for monostatic capture
++ ./sdrctl dev sdr0 set reg xpu 8 1000
+reg  cat: 6
+reg addr: 00060020
+reg  val: 000003e8
++ ./sdrctl dev sdr0 set reg xpu 1 1
+reg  cat: 6
+reg addr: 00060004
+reg  val: 00000001
++ ./sdrctl dev sdr0 set reg xpu 11 16
+reg  cat: 6
+reg addr: 0006002c
+reg  val: 00000010
++ [[ air == \i\n\t ]]
++ [[ air == \c\a\b\l\e\d ]]
++ [[ air == \a\i\r ]]
+Configuring board for external loopback
++ echo 'Configuring board for external loopback'
++ ./sdrctl dev sdr0 set reg drv_tx 4 0
+reg  cat: 8
+reg addr: 00080010
+reg  val: 00000000
++ ./sdrctl dev sdr0 set reg drv_rx 4 0
+reg  cat: 7
+reg addr: 00070010
+reg  val: 00000000
++ [[ 0 == 1 ]]
++ ./sdrctl dev sdr0 set reg rx_intf 3 0
+reg  cat: 2
+reg addr: 0002000c
+reg  val: 00000000
++ [[ zed_fmcs2 == \z\e\d\_\f\m\c\s\2 ]]
++ [[ 0 == 0 ]]
+Disable SPI control
++ echo 'Disable SPI control'
++ ./sdrctl dev sdr0 set reg xpu 13 1
+reg  cat: 6
+reg addr: 00060034
+reg  val: 00000001
++ set +x
+ssh root@192.168.10.122 'bash -s' < scripts/capture/set_side_ch.sh monostatic tx_rx_iq0 None 0 1 4092
++ lsmod
++ grep -q '^side_ch '
++ [[ monostatic == \j\m\b ]]
++ [[ tx_rx_iq0 == \c\s\i ]]
+Loading side_ch for IQ capture
++ echo 'Loading side_ch for IQ capture'
++ insmod_params=iq_len_init=4092
++ [[ 1 == 1 ]]
++ insmod_params+=' interrupt_init=1'
++ insmod side_ch.ko iq_len_init=4092 interrupt_init=1
++ set +x
+ssh root@192.168.10.122 'bash -s' < scripts/capture/set_capture_iq.sh monostatic tx_rx_iq0 None air 3 4092 0 0 1
++ [[ tx_rx_iq0 != \c\s\i ]]
++ iq_capture=1
++ iq_capture_cfg=0
++ iq_capture_data_type_jmb_enable=0
++ iq_capture_with_csi_capture_enable=0
++ iq_capture_all_antenna=0
++ [[ tx_rx_iq0 == \r\s\s\i\_\r\x\_\i\q\0 ]]
++ [[ tx_rx_iq0 == \r\x\_\i\q\0\_\i\q\1 ]]
++ [[ tx_rx_iq0 == \t\x\_\r\x\_\i\q\0 ]]
++ echo 'Configuring board for collecting I/Q for TX and RX at the same time'
+Configuring board for collecting I/Q for TX and RX at the same time
++ iq_capture_cfg=2
++ [[ None == \i\q ]]
++ [[ None == \c\s\i ]]
++ iq_capture_slv_reg3=33
++ ./side_ch_ctl wh3d33
+parse: ret 0
+   tx: action_flag 1 reg_type 1 reg_idx 3 reg_val 33 interval_us 0
+   rx: size 4 val 0 0x00000000
+Statistics (end):
+	side info count 0
+	side info dma symbol count 0
+	udp count 0
+	udp dma symbol count 0
+	file count 0
+	file dma symbol count 0
++ [[ air == \i\n\t ]]
++ ./side_ch_ctl wh5h0
+parse: ret 0
+   tx: action_flag 1 reg_type 1 reg_idx 5 reg_val 0 interval_us 0
+   rx: size 4 val 0 0x00000000
+Statistics (end):
+	side info count 0
+	side info dma symbol count 0
+	udp count 0
+	udp dma symbol count 0
+	file count 0
+	file dma symbol count 0
++ ./side_ch_ctl wh8d3
+parse: ret 0
+   tx: action_flag 1 reg_type 1 reg_idx 8 reg_val 3 interval_us 0
+   rx: size 4 val 0 0x00000000
+Statistics (end):
+	side info count 0
+	side info dma symbol count 0
+	udp count 0
+	udp dma symbol count 0
+	file count 0
+	file dma symbol count 0
++ ./side_ch_ctl wh11d0
+parse: ret 0
+   tx: action_flag 1 reg_type 1 reg_idx 11 reg_val 0 interval_us 0
+   rx: size 4 val 0 0x00000000
+Statistics (end):
+	side info count 0
+	side info dma symbol count 0
+	udp count 0
+	udp dma symbol count 0
+	file count 0
+	file dma symbol count 0
++ ./side_ch_ctl wh12d4092
+parse: ret 0
+   tx: action_flag 1 reg_type 1 reg_idx 12 reg_val 4092 interval_us 0
+   rx: size 4 val 0 0x00000000
+Statistics (end):
+	side info count 0
+	side info dma symbol count 0
+	udp count 0
+	udp dma symbol count 0
+	file count 0
+	file dma symbol count 0
++ [[ 0 == 1 ]]
++ echo 'Board has been configured successfully!'
+Board has been configured successfully!
++ set +x

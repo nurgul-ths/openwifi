@@ -1,0 +1,152 @@
+[  133.449125] ad9361 spi0.0: ad9361_probe : enter (ad9361)
+[  133.681674] ad9361 spi0.0: ad9361_probe : AD936x Rev 0 successfully initialized
+[  133.746576] xilinx-vdma 80400000.dma: Xilinx AXI DMA Engine Driver Probed!!
+[  133.747281] xilinx-vdma 80410000.dma: Xilinx AXI DMA Engine Driver Probed!!
+[  134.611262] cf_axi_adc 79020000.cf-ad9361-lpc: ADI AIM (10.01.b) at 0x79020000 mapped to 0x8eae5867, probed ADC AD9361 as MASTER
+[  134.640147] cf_axi_dds 79024000.cf-ad9361-dds-core-lpc: Analog Devices CF_AXI_DDS_DDS MASTER (9.01.b) at 0x79024000 mapped to 0xd9240166, probed DDS AD9361
+[  142.995804] fpga_manager fpga0: writing system_top.bit.bin to Xilinx Zynq FPGA Manager
+[  143.059726] clk_unregister: unregistering prepared clock: spi0.0-tx_sampl_clk
+[  143.059864] clk_unregister: unregistering prepared clock: spi0.0-clktf_clk
+[  143.059995] clk_unregister: unregistering prepared clock: spi0.0-t1_clk
+[  143.060125] clk_unregister: unregistering prepared clock: spi0.0-t2_clk
+[  143.060257] clk_unregister: unregistering prepared clock: spi0.0-dac_clk
+[  143.060858] clk_unregister: unregistering prepared clock: spi0.0-adc_clk
+[  143.060987] clk_unregister: unregistering prepared clock: spi0.0-bbpll_clk
+[  143.061115] clk_unregister: unregistering prepared clock: spi0.0-bb_refclk
+[  143.062782] ad9361 spi0.0: ad9361_probe : enter (ad9361)
+[  143.299301] ad9361 spi0.0: ad9361_probe : AD936x Rev 0 successfully initialized
+[  144.145656] cf_axi_adc 79020000.cf-ad9361-lpc: ADI AIM (10.01.b) at 0x79020000 mapped to 0x47a40c25, probed ADC AD9361 as MASTER
+[  145.173222] tx_intf: loading out-of-tree module taints kernel.
+
+[  145.174125] sdr,tx_intf dev_probe match!
+[  145.174160] sdr,tx_intf dev_probe io start 0x83c0ffff83c00000 end 0x200dfbb5790 name (null) flags 0xc10e722c desc 0x00000000
+[  145.174172] sdr,tx_intf dev_probe base_addr 0x1e8fa3d7
+[  145.174179] sdr,tx_intf dev_probe tx_intf_driver_api_inst 0x5a76b86f
+[  145.174185] sdr,tx_intf dev_probe             tx_intf_api 0x5a76b86f
+[  145.174189] sdr,tx_intf dev_probe succeed!
+[  145.174195] sdr,tx_intf hw_init mode 7
+[  145.174212] sdr,tx_intf hw_init mode TX_INTF_BW_20MHZ_AT_N_10MHZ_ANT1
+[  145.174222] sdr,tx_intf hw_init err 0
+
+[  145.246972] sdr,rx_intf dev_probe match!
+[  145.247006] sdr,rx_intf dev_probe io start 0x83c20000 end 0x83c2ffff name rx_intf@83c20000 flags 0x00000200 desc 0x00000000
+[  145.247014] sdr,rx_intf dev_probe base_addr 0xe0950000
+[  145.247020] sdr,rx_intf dev_probe rx_intf_driver_api_inst 0xbf1832c4
+[  145.247026] sdr,rx_intf dev_probe             rx_intf_api 0xbf1832c4
+[  145.247031] sdr,rx_intf dev_probe succeed!
+[  145.247037] sdr,rx_intf hw_init mode 2
+[  145.247054] sdr,rx_intf hw_init mode DDC_BW_20MHZ_AT_0MHZ
+[  145.247064] sdr,rx_intf hw_init err 0
+
+[  145.315077] sdr,openofdm_tx dev_probe match!
+[  145.315115] sdr,openofdm_tx dev_probe io start 0x83c10000 end 0x83c1ffff name openofdm_tx@83c10000 flags 0x00000200 desc 0x00000000
+[  145.315122] sdr,openofdm_tx dev_probe base_addr 0xe0970000
+[  145.315128] sdr,openofdm_tx dev_probe openofdm_tx_driver_api_inst 0xbf1882c4
+[  145.315134] sdr,openofdm_tx dev_probe             openofdm_tx_api 0xbf1882c4
+[  145.315139] sdr,openofdm_tx dev_probe succeed!
+[  145.315145] sdr,openofdm_tx hw_init mode 1
+[  145.315150] sdr,openofdm_tx hw_init mode OPENOFDM_TX_NORMAL
+[  145.315168] sdr,openofdm_tx hw_init err 0
+
+[  145.382743] sdr,openofdm_rx dev_probe match!
+[  145.382781] sdr,openofdm_rx dev_probe io start 0x83c30000 end 0x83c3ffff name openofdm_rx@83c30000 flags 0x00000200 desc 0x00000000
+[  145.382788] sdr,openofdm_rx dev_probe base_addr 0xe0990000
+[  145.382794] sdr,openofdm_rx dev_probe openofdm_rx_driver_api_inst 0xbf18d2c4
+[  145.382800] sdr,openofdm_rx dev_probe             openofdm_rx_api 0xbf18d2c4
+[  145.382805] sdr,openofdm_rx dev_probe succeed!
+[  145.382811] sdr,openofdm_rx hw_init mode 1
+[  145.382816] sdr,openofdm_rx hw_init mode OPENOFDM_RX_NORMAL
+[  145.382824] sdr,openofdm_rx hw_init input: power_thres 124 dc_running_sum_th 64 min_plateau 100
+[  145.382841] sdr,openofdm_rx hw_init err 0
+
+[  145.463033] sdr,xpu dev_probe match!
+[  145.463073] sdr,xpu dev_probe io start 0x83c40000 end 0x83c4ffff name xpu@83c40000 flags 0x00000200 desc 0x00000000
+[  145.463080] sdr,xpu dev_probe base_addr 0xe0920000
+[  145.463086] sdr,xpu dev_probe xpu_driver_api_inst 0xbf1922c4
+[  145.463092] sdr,xpu dev_probe             xpu_api 0xbf1922c4
+[  145.463097] sdr,xpu dev_probe reset tsf timer
+[  145.563126] sdr,xpu dev_probe XPU_REG_TSF_RUNTIME_VAL_LOW_read 1 33006 100016us
+[  145.563135] sdr,xpu dev_probe succeed!
+[  145.563141] sdr,xpu hw_init mode 1
+[  145.563159] sdr,xpu hw_init mode XPU_NORMAL
+[  145.563166] sdr,xpu hw_init err 0
+
+[  145.663715] sdr,sdr openwifi_dev_probe: match!
+[  145.663791] sdr,sdr custom_match_spi_dev ad9361-phy ad9361-phy 1
+[  145.663807] sdr,sdr bus_find_device ad9361-phy: ad9361. driver_data pointer 8e10ce75
+[  145.663815] sdr,sdr ad9361_spi_to_phy ad9361-phy: ad9361
+[  145.663855] sdr,sdr custom_match_platform_dev 79024000.cf-ad9361-dds-core-lpc
+[  145.663864] sdr,sdr openwifi_dev_probe: cf-ad9361-dds-core-lpc dds_st->version 00000000 chip_info->name
+[  145.663875] sdr,sdr openwifi_dev_probe: cf_axi_dds_datasel DATA_SEL_DMA
+[  145.663883] sdr,sdr openwifi_dev_probe: priv->rf_bw == 40000000Hz. bool for 20000000 0, 40000000 1
+[  145.663891] sdr,sdr openwifi_dev_probe: test_mode 0 AGGR_ENABLE 0 TX_OFFSET_TUNING_ENABLE 0 init_tx_att 0
+[  145.663899] sdr,sdr openwifi_set_antenna: tx_ant1 rx_ant1
+[  145.664421] sdr,sdr openwifi_set_antenna: ad9361_set_tx_atten ant0 0 OK
+[  145.664659] sdr,sdr openwifi_set_antenna: ad9361_set_tx_atten ant1 89750 OK
+[  145.664748] sdr,sdr openwifi_set_antenna: ad9361_ctrl_outs_setup en_mask 0xff index 0x16
+[  145.664758] sdr,sdr openwifi_set_antenna: TX_INTF_REG_ANT_SEL_write value 1
+[  145.664766] sdr,sdr openwifi_set_antenna: RX_INTF_REG_ANT_SEL_write value 0
+[  145.664825] sdr,sdr openwifi_dev_probe: ad9361_spi_read REG_CTRL_OUTPUT_POINTER 0x16
+[  145.664883] sdr,sdr openwifi_dev_probe: ad9361_spi_read REG_CTRL_OUTPUT_ENABLE 0xff
+[  145.664943] sdr,sdr openwifi_dev_probe: rfkill radio on
+[  145.664958] sdr,sdr openwifi_dev_probe: band_2GHz.n_channels 14 n_bitrates 12 band_5GHz.n_channels 11 n_bitrates 12
+[  145.664983] sdr,sdr openwifi_dev_probe: mac_addr 66:55:44:33:22:86
+[  145.665063] ieee80211 phy0: Selected rate control algorithm 'minstrel_ht'
+[  145.665369] sdr,sdr openwifi_get_antenna: tx_ant1 rx_ant1
+[  145.665381] sdr,sdr openwifi_get_antenna: drv tx cfg 2 offset 0 drv rx cfg 2 offset 0 drv ctrl_out sel 16
+[  145.665390] sdr,sdr openwifi_get_antenna: fpga tx sel 1 rx sel 0
+[  145.667679] sdr,sdr openwifi_get_antenna: rf tx att0 0 tx att1 89750 ctrl_out sel 16
+[  145.669364] sdr,sdr openwifi_dev_probe: ieee80211_register_hw 0
+[  145.669383] sdr,sdr openwifi_dev_probe: sysfs_create_bin_file 0
+[  145.669390] sdr,sdr openwifi_dev_probe: bin_dac_intf.size 320
+[  145.669403] sdr,sdr openwifi_dev_probe: sysfs_create_group dac_intf_attribute_group 0
+[  145.669412] sdr,sdr openwifi_dev_probe: sysfs_create_bin_file 0
+[  145.669419] sdr,sdr openwifi_dev_probe: bin_iq.size 32768
+[  145.669428] sdr,sdr openwifi_dev_probe: sysfs_create_group tx_intf_attribute_group 0
+[  145.669438] sdr,sdr openwifi_dev_probe: sysfs_create_bin_file 0
+[  145.669444] sdr,sdr openwifi_dev_probe: bin_iq_sram.size 32768
+[  145.669471] sdr,sdr openwifi_dev_probe: sysfs_create_group tx_intf_sram_attribute_group 0
+[  145.669597] sdr,sdr openwifi_dev_probe: sysfs_create_group stat_attribute_group 0
+[  145.669613] ieee80211 phy0: hwaddr 665544332286, ZYNQ + ad9361
+[  145.682431] sdr,sdr openwifi_rfkill_init: wireless switch is on
+[  145.699531] sdr,sdr fpga-axi@0:sdr sdr0: renamed from wlan0
+[  146.159511] sdr,sdr openwifi_set_antenna: tx_ant1 rx_ant1
+[  146.159738] sdr,sdr openwifi_set_antenna: ad9361_set_tx_atten ant0 0 OK
+[  146.159909] sdr,sdr openwifi_set_antenna: ad9361_set_tx_atten ant1 89750 OK
+[  146.159977] sdr,sdr openwifi_set_antenna: ad9361_ctrl_outs_setup en_mask 0xff index 0x16
+[  146.159987] sdr,sdr openwifi_set_antenna: TX_INTF_REG_ANT_SEL_write value 1
+[  146.159995] sdr,sdr openwifi_set_antenna: RX_INTF_REG_ANT_SEL_write value 0
+[  146.160046] sdr,sdr openwifi_start: rfkill radio on
+[  146.160055] sdr,rx_intf hw_init mode 2
+[  146.160071] sdr,rx_intf hw_init mode DDC_BW_20MHZ_AT_0MHZ
+[  146.160080] sdr,rx_intf hw_init err 0
+[  146.160086] sdr,tx_intf hw_init mode 2
+[  146.160101] sdr,tx_intf hw_init mode TX_INTF_BW_20MHZ_AT_0MHZ_ANT0
+[  146.160109] sdr,tx_intf hw_init err 0
+[  146.160116] sdr,openofdm_tx hw_init mode 1
+[  146.160121] sdr,openofdm_tx hw_init mode OPENOFDM_TX_NORMAL
+[  146.160136] sdr,openofdm_tx hw_init err 0
+[  146.160142] sdr,openofdm_rx hw_init mode 1
+[  146.160146] sdr,openofdm_rx hw_init mode OPENOFDM_RX_NORMAL
+[  146.160154] sdr,openofdm_rx hw_init input: power_thres 124 dc_running_sum_th 64 min_plateau 100
+[  146.160170] sdr,openofdm_rx hw_init err 0
+[  146.160176] sdr,xpu hw_init mode 1
+[  146.160194] sdr,xpu hw_init mode XPU_NORMAL
+[  146.160201] sdr,xpu hw_init err 0
+[  146.160210] sdr,sdr openwifi_start: rx_intf_cfg 2 openofdm_rx_cfg 1 tx_intf_cfg 2 openofdm_tx_cfg 1
+[  146.160216] sdr,sdr openwifi_start: rx_freq_offset_to_lo_MHz 0 tx_freq_offset_to_lo_MHz 0
+[  146.160812] sdr,sdr openwifi_start: DMA channel setup successfully. priv->rx_chan 0x6e2edae3 priv->tx_chan 0xa13ac9f8
+[  146.161332] sdr,sdr openwifi_init_rx_ring: NUM_RX_BD 64 RX_BD_BUF_SIZE 2048 pkt existing flag are cleared!
+[  146.161469] sdr,sdr openwifi_start: irq_side_ch 57
+[  146.161524] sdr,sdr openwifi_start: irq_rx 58
+[  146.161574] sdr,sdr openwifi_start: irq_tx_multistatic 59
+[  146.161621] sdr,sdr openwifi_start: irq_tx 60
+[  146.161630] sdr,sdr openwifi_start: normal end
+[  146.161639] sdr,sdr openwifi_prepare_multicast
+[  146.161653] sdr,sdr openwifi_configure_filter MON 1 M_BCN 0 BST0 1 BST1 1 UST 1 PB_RQ 0 PS_PL 1 O_BSS 1 CTL 1 BCN_PRP 1 PCP_FL 0 FCS_FL 0 ALL_MUT 1
+[  146.194308] sdr,sdr openwifi_rf_rx_update_after_tuning 2412MHz rssi_correction 153 fpga_lbt_th 182(-62dBm) auto 182 static 306 receiver th 136(-85dBm)
+[  146.194319] sdr,sdr ad9361_rf_set_channel 2412MHz done
+[  146.194353] sdr,sdr openwifi_prepare_multicast
+[  146.194372] sdr,sdr openwifi_configure_filter MON 1 M_BCN 0 BST0 1 BST1 1 UST 1 PB_RQ 0 PS_PL 1 O_BSS 1 CTL 1 BCN_PRP 1 PCP_FL 0 FCS_FL 0 ALL_MUT 1
+[  146.324810] sdr,sdr openwifi_rf_rx_update_after_tuning 2472MHz rssi_correction 153 fpga_lbt_th 182(-62dBm) auto 182 static 306 receiver th 136(-85dBm)
+[  146.324822] sdr,sdr ad9361_rf_set_channel 2472MHz done

@@ -1,0 +1,87 @@
+[  292.409467] sdr,sdr recv set cmd reg cat 3 addr 00000034 val 00000100 idx 13
+[  292.416236] sdr,sdr recv set cmd reg cat 2 addr 0000002c val 00000000 idx 11
+[  292.423138] sdr,sdr recv set cmd reg cat 1 addr 00000000 val 00000000 idx 0
+[  292.423244] sdr,sdr ad9361_get_tx_atten ant0 0
+[  292.423416] sdr,sdr ad9361_set_tx_atten ant0 0 OK
+[  292.423468] sdr,sdr ad9361_get_tx_atten ant1 89750
+[  293.003793] sdr,sdr recv set cmd reg cat 3 addr 0000000c val 00000000 idx 3
+[  293.010821] sdr,sdr recv set cmd reg cat 3 addr 00000034 val 00000000 idx 13
+[  293.018249] sdr,sdr recv set cmd reg cat 4 addr 00000014 val 00000301 idx 5
+[  293.549927] sdr,sdr recv set cmd reg cat 6 addr 00000020 val 000003e8 idx 8
+[  293.556402] sdr,sdr recv set cmd reg cat 6 addr 00000004 val 00000001 idx 1
+[  293.563046] sdr,sdr recv set cmd reg cat 6 addr 0000002c val 00000010 idx 11
+[  293.575418] sdr,sdr recv set cmd reg cat 8 addr 00000010 val 00000000 idx 4
+[  293.575432] sdr,sdr openwifi_set_antenna: tx_ant1 rx_ant1
+[  293.575643] sdr,sdr openwifi_set_antenna: ad9361_set_tx_atten ant0 0 OK
+[  293.575816] sdr,sdr openwifi_set_antenna: ad9361_set_tx_atten ant1 89750 OK
+[  293.575878] sdr,sdr openwifi_set_antenna: ad9361_ctrl_outs_setup en_mask 0xff index 0x16
+[  293.575887] sdr,sdr openwifi_set_antenna: TX_INTF_REG_ANT_SEL_write value 1
+[  293.575895] sdr,sdr openwifi_set_antenna: RX_INTF_REG_ANT_SEL_write value 0
+[  293.582636] sdr,sdr recv set cmd reg cat 7 addr 00000010 val 00000000 idx 4
+[  293.582649] sdr,sdr openwifi_set_antenna: tx_ant1 rx_ant1
+[  293.582855] sdr,sdr openwifi_set_antenna: ad9361_set_tx_atten ant0 0 OK
+[  293.583014] sdr,sdr openwifi_set_antenna: ad9361_set_tx_atten ant1 89750 OK
+[  293.583076] sdr,sdr openwifi_set_antenna: ad9361_ctrl_outs_setup en_mask 0xff index 0x16
+[  293.583086] sdr,sdr openwifi_set_antenna: TX_INTF_REG_ANT_SEL_write value 1
+[  293.583094] sdr,sdr openwifi_set_antenna: RX_INTF_REG_ANT_SEL_write value 0
+[  293.589965] sdr,sdr recv set cmd reg cat 2 addr 0000000c val 00000000 idx 3
+[  293.597147] sdr,sdr recv set cmd reg cat 6 addr 00000034 val 00000001 idx 13
+
+[  294.172728] sdr,side_ch dev_probe: match!
+[  294.172773] sdr,side_ch dev_probe: io start 0x9974a785 end 0x34f62097 name side_ch@83c50000 flags 0x00000200 desc (null)
+[  294.172781] sdr,side_ch dev_probe: base_addr 0xa3f116a7
+[  294.172787] sdr,side_ch dev_probe: succeed!
+[  294.172817] sdr,side_ch dev_probe: num_eq_init 8 iq_len_init 4092 header_len_init 2 interrupt_init 1 debug_level_init 0
+[  294.174637] sdr,side_ch dev_probe: DMA channel setup successfully. chan_to_pl 0x00000000 chan_to_ps 0xc03c27c9
+[  294.174677] sdr,side_ch init_side_channel: side_info_queue[0] 0x11e96454
+[  294.174703] sdr,side_ch init_side_channel: side_info_queue[1] 0xff55ec99
+[  294.174729] sdr,side_ch init_side_channel: side_info_queue[2] 0x62393dab
+[  294.174748] sdr,side_ch init_side_channel: side_info_queue[3] 0xee380a1d
+[  294.174760] sdr,side_ch init_side_channel: side_info_queue[4] 0x82a6c3f8
+[  294.174787] sdr,side_ch init_side_channel: side_info_queue[5] 0xa2f49b55
+[  294.174809] sdr,side_ch init_side_channel: side_info_queue[6] 0xfd4ae463
+[  294.174838] sdr,side_ch init_side_channel: side_info_queue[7] 0x57aa6a51
+[  294.174863] sdr,side_ch init_side_channel: side_info_queue[8] 0x0d111fca
+[  294.174890] sdr,side_ch init_side_channel: side_info_queue[9] 0x6530c84c
+[  294.174914] sdr,side_ch init_side_channel: side_info_queue[10] 0xc9acab52
+[  294.174940] sdr,side_ch init_side_channel: side_info_queue[11] 0xcc243916
+[  294.174965] sdr,side_ch init_side_channel: side_info_queue[12] 0x235f8d37
+[  294.174989] sdr,side_ch init_side_channel: side_info_queue[13] 0xc1ad6154
+[  294.175016] sdr,side_ch init_side_channel: side_info_queue[14] 0x655c124c
+[  294.175040] sdr,side_ch init_side_channel: side_info_queue[15] 0xab579382
+[  294.175054] sdr,side_ch init_side_channel: side_info_queue[16] 0x85d10747
+[  294.175066] sdr,side_ch init_side_channel: side_info_queue[17] 0xe8685ef7
+[  294.175077] sdr,side_ch init_side_channel: side_info_queue[18] 0xc66450bb
+[  294.175087] sdr,side_ch init_side_channel: side_info_queue[19] 0x99e44f68
+[  294.175097] sdr,side_ch init_side_channel: side_info_queue[20] 0xd7a002cd
+[  294.175109] sdr,side_ch init_side_channel: side_info_queue[21] 0x973ec808
+[  294.175131] sdr,side_ch init_side_channel: side_info_queue[22] 0xd9f77eb5
+[  294.175158] sdr,side_ch init_side_channel: side_info_queue[23] 0x88c857a5
+[  294.175184] sdr,side_ch init_side_channel: side_info_queue[24] 0xcd9edb1a
+[  294.175207] sdr,side_ch init_side_channel: side_info_queue[25] 0x677d5043
+[  294.175222] sdr,side_ch init_side_channel: side_info_queue[26] 0xc675801e
+[  294.175233] sdr,side_ch init_side_channel: side_info_queue[27] 0xfc9edff1
+[  294.175244] sdr,side_ch init_side_channel: side_info_queue[28] 0x0586f119
+[  294.175255] sdr,side_ch init_side_channel: side_info_queue[29] 0x8125e1ec
+[  294.175277] sdr,side_ch init_side_channel: side_info_queue[30] 0x9d42dcb4
+[  294.175294] sdr,side_ch init_side_channel: side_info_queue[31] 0x80e9a628
+[  294.175305] sdr,side_ch init_side_channel: side_info_queue[32] 0x47422a32
+[  294.175319] sdr,side_ch init_side_channel: side_info_queue[33] 0x026c7827
+[  294.175346] sdr,side_ch init_side_channel: side_info_queue[34] 0x0ac6ef22
+[  294.175369] sdr,side_ch init_side_channel: side_info_queue[35] 0xb1de63eb
+[  294.175398] sdr,side_ch init_side_channel: side_info_queue[36] 0x57e0b323
+[  294.175420] sdr,side_ch init_side_channel: side_info_queue[37] 0xbb483e9e
+[  294.175432] sdr,side_ch init_side_channel: side_info_queue[38] 0x4487acaa
+[  294.175443] sdr,side_ch init_side_channel: side_info_queue[39] 0xfd3f4903
+[  294.175455] sdr,side_ch init_side_channel: side_info_queue[40] 0x7555de15
+[  294.175466] sdr,side_ch init_side_channel: side_info_queue[41] 0x4ee8a764
+[  294.175477] sdr,side_ch init_side_channel: side_info_queue[42] 0xd115c73f
+[  294.175487] sdr,side_ch init_side_channel: side_info_queue[43] 0x00bce0a3
+[  294.175497] sdr,side_ch init_side_channel: side_info_queue[44] 0xcca9abe2
+[  294.175508] sdr,side_ch init_side_channel: side_info_queue[45] 0xa6637d6a
+[  294.175527] sdr,side_ch init_side_channel: side_info_queue[46] 0x62b9453c
+[  294.175556] sdr,side_ch init_side_channel: side_info_queue[47] 0x32f94a4a
+[  294.175574] sdr,side_ch init_side_channel: side_info_queue[48] 0x17f699a6
+[  294.175586] sdr,side_ch init_side_channel: side_info_queue[49] 0xd7e4e838
+[  294.175591] sdr,side_ch dev_probe: init_side_channel() err 0
+[  294.175673] sdr,side_ch dev_probe: irq_side_ch 57 mapped succesfully

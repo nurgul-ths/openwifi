@@ -1,4 +1,4 @@
-name: wcnc
+name: openwifi
 channels:
   - defaults
   - conda-forge
