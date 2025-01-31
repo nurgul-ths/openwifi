@@ -109,15 +109,17 @@ function info = getSubcarrierMapping(fieldname, cfgHT, sampleRate)
 
   % Compute frequency spacing and carrier reference index
   info.FreqSpacing = info.SampleRate / info.FFTLength;
-  info.CarrierIdx  = info.FFTLength / 2;
+  info.CarrierIdx  = info.FFTLength / 2; % DC index with 1-based indexing
 
-  % Compute frequency indices from [-NFFT/2, NFFT/2-1]
+  % Compute frequency indices from -NFFT/2 ... NFFT/2-1
+  % (e.g., for NFFT=64, freq indices = [-32 -31 ... -1 0 1 ... 31])
   info.FrequencyIndices = reshape((0:(info.FFTLength - 1)) - info.CarrierIdx, [], 1);
 
   % Determine null frequencies (those not in the active set)
   info.NullFrequencyIndices = setdiff(info.FrequencyIndices, info.ActiveFrequencyIndices);
 
-  % Compute frequency-based indices for pilots and data
+  % Convert active subcarriers from 1-based to 'centered' frequency indices.
+  % Example: if ActiveFFTIndices = 33 => DC => 33 - 32 - 1 = 0
   info.PilotFrequencyIndices = info.ActiveFFTIndices(info.PilotIndices) - info.CarrierIdx - 1;
   info.DataFrequencyIndices  = info.ActiveFFTIndices(info.DataIndices)  - info.CarrierIdx - 1;
 

@@ -1,27 +1,52 @@
-%getFftDcIdx: Computes the FFT DC index for a given FFT length.
-%
-% USAGE
-%   fftDcIdx = getFftDcIdx(nfft);
-%
-% INPUT PARAMETERS
-%   nfft: Length of the FFT for which the DC index is to be determined.
-%
-% OUTPUT PARAMETERS
-%   fftDcIdx: FFT DC index for the given FFT length.
-%
-% DETAILS
-%   This function calculates the position of the DC component in an FFT result when the
-%   DC component is in the center.
-%
-%   The DC index is (nfft / 2 + 1) for even nfft, and ((nfft + 1) / 2) for odd nfft (counting from 1)
-%   Doing floor(nfft / 2) + 1 will give the same result for both even and odd nfft.
-%
-%   For example, for nfft=64, the DC index is 33 (counting from 1) since the first 32 bins are negative frequencies
-%   and the next 32 bins are positive frequencies (the 0th frequency is included in positive).
-%   So, just remember that the DC is always included in the positive frequencies which means that
-%   if nfft is even, there will be one less positive (excluding DC) than negative frequency, and if nfft is odd,
-%   there will be the same number of positive (excluding DC) and negative frequencies.
-%
 function fftDcIdx = getFftDcIdx(nfft)
+  % getFftDcIdx returns the DC (zero frequency) index in centered FFT output.
+  %
+  % Returns the index of the DC (zero frequency) component in FFT results when
+  % frequencies are centered around zero. Handles both even and odd FFT lengths.
+  % This uses that the MATLAB FFT function will return for an even length of L,
+  % the frequency domain starts from the negative of the Nyquist frequency
+  % -Fs/2 up to Fs/2-Fs/L with a spacing or frequency resolution of Fs/L.
+  %
+  % However, in practice, we use this function mostly for Wi-Fi signals where
+  % the FFT is centered around DC (zero frequency) and the DC component is
+  % where the carrier frequency is located. This function returns the index
+  % of the DC component in the FFT output assuming size 1 to 64, for instance
+  % for 802.11n.
+  %
+  % Args:
+  %   nfft: FFT length (positive integer)
+  %
+  % Returns:
+  %   fftDcIdx: Index of DC component (1-based indexing)
+  %
+  % Note:
+  %   For even length FFTs (e.g., nfft = 64):
+  %     - Indices 1 to nfft/2: negative frequencies
+  %     - Index nfft/2 + 1: DC (zero frequency)
+  %     - Remaining indices: positive frequencies
+  %
+  %   Example for nfft = 64:
+  %     - Indices 1-32: negative frequencies
+  %     - Index 33: DC
+  %     - Indices 34-64: positive frequencies
+  %
+  %   For odd length FFTs (e.g., nfft = 65):
+  %     - Indices 1 to floor(nfft/2): negative frequencies
+  %     - Index floor(nfft/2) + 1: DC
+  %     - Remaining indices: positive frequencies
+  %
+  %   Example for nfft = 65:
+  %     - Indices 1-32: negative frequencies
+  %     - Index 33: DC
+  %     - Indices 34-65: positive frequencies
+  %
+  % Example:
+  %   dcIdx = getFftDcIdx(64);  % Returns 33
+  %   dcIdx = getFftDcIdx(65);  % Also returns 33
+  %
+  % See also:
+  %   fft, fftshift, ifftshift
+
+  validateattributes(nfft, {'numeric'}, {'scalar', 'positive', 'integer'});
   fftDcIdx = floor(nfft / 2) + 1;
 end
