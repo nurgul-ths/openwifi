@@ -66,7 +66,7 @@
 %   to be on the MATLAB path.
 
 
-function x = create_interim_data(inDataPath, fileList, cfgInterim, cfg80211, repoPath)
+function create_interim_data(inDataPath, fileList, cfgInterim, cfg80211, repoPath)
 
   %% Settings and Configuration
   [jsonPath, dataType, ...
@@ -131,7 +131,6 @@ function x = create_interim_data(inDataPath, fileList, cfgInterim, cfg80211, rep
 
     save(fileName, 'dataStruct', 'cfgInterim', 'cfg80211', 'cfgHT', 'infoWlanFieldMulti', '-v7.3');
     createInterimLogFile(repoPath, expJsonDataFile, fileNameBase);
-    x = dataStruct;
   end
 end
 
